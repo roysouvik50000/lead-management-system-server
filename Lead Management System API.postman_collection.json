@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "ca0d7e04-25ad-499f-a186-502c771a5772",
+		"name": "Lead Management System API",
+		"description": "Postman collection for Lead Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48525392"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User (Admin only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"My Manager22\",\n  \"email\": \"manager22@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"Manager\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"manager22@example.com\",\n   \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leads",
+			"item": [
+				{
+					"name": "Create Lead (Manager only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Souvik Roy\",\n  \"email\": \"contact@roy.com\",\n  \"phone\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/leads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Leads",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"manager22@example.com\",\r\n   \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/leads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Lead",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Engaged\",\n  \"note\": \"Follow-up scheduled for next week\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/leads/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68ca8aa793efe9592d79a857"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Lead (Manager only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/leads/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68ca4f55a1270650a90e28e4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Lead (Manager only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/leads/:id/assign/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads",
+								":id",
+								"assign",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68ca8aa793efe9592d79a857"
+								},
+								{
+									"key": "userId",
+									"value": "68ca4bbba1270650a90e28e1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Activity (SalesRep only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Engaged\",\n  \"note\": \"Discussed pricing with client\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/leads/:id/activity",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"leads",
+								":id",
+								"activity"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Y2E0MjM1MjQwZGY0ZTVkZTYwYjU5MSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1ODA4NzUxMywiZXhwIjoxNzU5MzgzNTEzfQ.LHN3wkWpsWxF3xgPOVthd866Egryqdnard-756WeFtk"
+		}
+	]
+}
