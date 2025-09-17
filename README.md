@@ -71,13 +71,10 @@ Step-by-step guide to get the project running:
 
 ## **Auth APIs**
 
- ### - Register (Admin only)
-
-    1. Register User (Admin only)
-    Endpoint: POST /api/auth/register
-    Headers: Authorization: Bearer <token>
-    Body:
-
+ ####   - Register User (Admin only)
+ - Endpoint: POST /api/auth/register
+- Headers: Authorization: Bearer <token>
+- Body:
 ```
     {
         "name": "My Manager",
@@ -92,7 +89,12 @@ Response:
 
     {
         "message": "User registered successfully",
-        "user": { "id": "64b...", "name": "My Manager", "email": "manager@example.com", "role": "Manager" }
+        "user": { 
+            "id": "68ca4afca1270650a90e28de",
+            "name": "My Manager",
+            "email": "manager@example.com",
+            "role": "Manager" 
+            }
     }
 
 ```
